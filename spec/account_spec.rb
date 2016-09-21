@@ -1,4 +1,5 @@
 require 'account'
+require 'transaction'
 
 describe @account do
   before(:each) do
@@ -23,16 +24,16 @@ describe @account do
     end
 
     it "Records the amount deposited" do
-      expect(@transactions[0][0]).to eq(100)
+      expect(@transactions[0].money).to eq(100)
     end
 
     it "Records the balance at the time of deposit" do
-      expect(@transactions[0][1]).to eq(200)
+      expect(@transactions[0].balance).to eq(200)
     end
 
     it "Keeps track of the date of deposit" do
       d = Date.today.strftime("%d/%m/%y")
-      expect(@transactions[0][2]).to eq(d)
+      expect(@transactions[0].date).to eq(d)
     end
   end
 
@@ -49,16 +50,16 @@ describe @account do
     end
 
     it "Records the amount deposited" do
-      expect(@transactions[0][0]).to eq(-50)
+      expect(@transactions[0].money).to eq(-50)
     end
 
     it "Records the balance at the time of withdrawal" do
-      expect(@transactions[0][1]).to eq(50)
+      expect(@transactions[0].balance).to eq(50)
     end
 
     it "Keeps track of the date of withdrawal" do
       d = Date.today.strftime("%d/%m/%y")
-      expect(@transactions[0][2]).to eq(d)
+      expect(@transactions[0].date).to eq(d)
     end
   end
 end

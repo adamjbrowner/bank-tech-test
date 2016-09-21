@@ -1,4 +1,5 @@
 require './lib/account'
+require './lib/transaction'
 require 'date'
 
 account = Account.new(0)
@@ -28,7 +29,7 @@ while leave == false do
 
   when "STATEMENT"
     account.transactions.each do |t|
-       puts "Date: #{t[2]}| Amount: #{t[0]}| Balance: #{t[1]}"
+       puts "Date: #{t.date}| Amount: #{t.money}| Balance: #{t.balance}"
     end
 
   when "FINISH"

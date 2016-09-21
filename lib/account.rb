@@ -1,5 +1,7 @@
 class Account
 
+  attr_reader :balance, :transactions
+
   def initialize(money)
     @balance = 0 + money
     @transactions = []
@@ -14,7 +16,5 @@ class Account
     @balance -= money
     @transactions << [-money, @balance, Date.today.strftime("%d/%m/%y")]
   end
-  
-  attr_reader :balance, :transactions
 
 end

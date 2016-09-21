@@ -3,6 +3,7 @@ require 'account'
 describe @account do
   before(:each) do
     @account = Account.new(100)
+    @transactions = @account.transactions
   end
   describe '#initialize' do
     it "can initialize with a balance" do
@@ -22,16 +23,16 @@ describe @account do
     end
 
     it "Records the amount deposited" do
-      expect(@account.transactions[0][0]).to eq(100)
+      expect(@transactions[0][0]).to eq(100)
     end
 
     it "Records the balance at the time of deposit" do
-      expect(@account.transactions[0][1]).to eq(200)
+      expect(@transactions[0][1]).to eq(200)
     end
 
     it "Keeps track of the date of deposit" do
       d = Date.today.strftime("%d/%m/%y")
-      expect(@account.transactions[0][2]).to eq(d)
+      expect(@transactions[0][2]).to eq(d)
     end
   end
 
@@ -44,20 +45,20 @@ describe @account do
     end
 
     it "Keeps track of the number of withdrawals made" do
-      expect(@account.transactions.length).to eq(1)
+      expect(@transactions.length).to eq(1)
     end
 
     it "Records the amount deposited" do
-      expect(@account.transactions[0][0]).to eq(-50)
+      expect(@transactions[0][0]).to eq(-50)
     end
 
     it "Records the balance at the time of withdrawal" do
-      expect(@account.transactions[0][1]).to eq(50)
+      expect(@transactions[0][1]).to eq(50)
     end
 
     it "Keeps track of the date of withdrawal" do
       d = Date.today.strftime("%d/%m/%y")
-      expect(@account.transactions[0][2]).to eq(d)
+      expect(@transactions[0][2]).to eq(d)
     end
   end
 end
